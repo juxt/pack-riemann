@@ -6,7 +6,7 @@
         "type": "amazon-ebs",
         "region": "eu-west-1",
         "source_ami": "ami-0d77397e",
-        "instance_type": "t2.micro",
+        "instance_type": "t2.medium",
         "ssh_username": "ubuntu",
         "ami_name": "juxt-riemann-{{user `riemann_version`}}-{{timestamp}}"
     }],
