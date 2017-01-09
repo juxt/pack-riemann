@@ -3,7 +3,7 @@ Description=Riemann
 After=network.target
 
 [Service]
-User=riemann
+User=ubuntu
 ExecStart=/app/bin/riemann /etc/riemann.config
 ExecReload=/bin/kill -HUP ${MAINPID}
 ExecStop=/bin/kill -WINCH ${MAINPID}
