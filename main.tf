@@ -12,6 +12,10 @@ variable "riemann_ami" {}
 
 variable "riemann_key_name" {}
 
+variable "riemann_key_path" {}
+
+variable "riemann_config_file" {}
+
 # Providers -----------------------------
 
 provider "aws" {
@@ -26,5 +30,7 @@ module "staging_riemann" {
   availability_zones = ["${var.availability_zone}"]
   system_name        = "${var.system_name}"
   key_name           = "${var.riemann_key_name}"
+  key_path           = "${var.riemann_key_path}"
   ami_image_id       = "${var.riemann_ami}"
+  config_file        = "${var.riemann_config_file}"
 }

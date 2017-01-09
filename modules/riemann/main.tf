@@ -27,23 +27,36 @@ resource "aws_security_group" "inbound" {
   }
 }
 
-data "template_file" "install_user_data" {
-  template = "${file("${path.module}/files/install.sh")}"
-
-  vars {}
-}
-
 resource "aws_instance" "riemann" {
   ami                    = "${var.ami_image_id}"
   instance_type          = "${var.instance_type}"
   availability_zone      = "${var.availability_zones[0]}"
   vpc_security_group_ids = ["${aws_security_group.inbound.id}"]
-
-  user_data = "${data.template_file.install_user_data.rendered}"
-  key_name  = "${var.key_name}"
+  key_name               = "${var.key_name}"
 
   tags {
     Name = "${var.system_name}-riemann"
     Type = "Riemann"
+  }
+
+  connection {
+    user        = "ubuntu"
+    private_key = "${file("${var.key_path}")}"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo touch /etc/riemann.conf",
+      "sudo chown -R ubuntu:ubuntu /etc/riemann.conf",
+    ]
+  }
+
+  provisioner "file" {
+    source      = "${var.config_file}"
+    destination = "/etc/riemann.conf"
+  }
+
+  provisioner "remote-exec" {
+    script = "${file("${path.module}/files/install.sh")}"
   }
 }
