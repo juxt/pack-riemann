@@ -23,7 +23,7 @@ resource "aws_security_group" "inbound" {
   }
 
   tags {
-    Name = "${var.system_name}_transactors"
+    Name = "${var.system_name}_riemann"
   }
 }
 
