@@ -10,10 +10,21 @@
         "ssh_username": "ubuntu",
         "ami_name": "juxt-riemann-{{user `riemann_version`}}-{{timestamp}}"
     }],
-    "provisioners": [{
-        "type": "shell",
-        "script": "install-riemann.sh",
-        "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Path }} {{user `riemann_version`}}'"
-    }],
+    "provisioners": [
+        {
+         "type": "shell",
+         "script": "install-riemann.sh",
+         "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Path }} {{user `riemann_version`}}'"
+        },
+        {
+         "type": "file",
+         "source": "systemd",
+         "destination": "/tmp"
+        },
+        {
+         "type": "shell",
+         "inline": ["sudo mv /tmp/systemd/* /etc/systemd/system/"]
+        }
+        ],
     "post-processors": ["vagrant"]
 }
