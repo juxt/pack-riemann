@@ -1,0 +1,8 @@
+[Unit]
+Description=Riemann Dash
+Requires=riemann.service
+After=riemann.service
+
+[Service]
+User=ubuntu
+ExecStart=riemann-dash
