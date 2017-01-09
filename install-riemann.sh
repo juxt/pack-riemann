@@ -6,7 +6,6 @@ RIEMANN_VERSION=$1
 apt-get update
 apt-get -y install default-jre
 apt-get -y install default-jdk
-apt-get install bzip2
 
 mkdir /riemann
 cd /riemann
