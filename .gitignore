@@ -1,0 +1,5 @@
+/packer_amazon-ebs_aws.box
+/proposed.plan
+/.terraform
+/terraform.tfstate
+/terraform.tfstate.backup
