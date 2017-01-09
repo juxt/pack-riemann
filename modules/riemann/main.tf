@@ -46,17 +46,20 @@ resource "aws_instance" "riemann" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo touch /etc/riemann.conf",
-      "sudo chown -R ubuntu:ubuntu /etc/riemann.conf",
+      "sudo touch /etc/riemann.config",
+      "sudo chown -R ubuntu:ubuntu /etc/riemann.config",
     ]
   }
 
   provisioner "file" {
     source      = "${var.config_file}"
-    destination = "/etc/riemann.conf"
+    destination = "/etc/riemann.config"
   }
 
   provisioner "remote-exec" {
-    script = "${file("${path.module}/files/install.sh")}"
+    inline = [
+      "sudo systemctl start riemann"
+      "sudo systemctl start riemann-dash"
+    ]
   }
 }
