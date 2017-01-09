@@ -1,6 +1,6 @@
 # Riemann role
-resource "aws_security_group" "internal_inbound" {
-  name        = "internal_inbound"
+resource "aws_security_group" "inbound" {
+  name        = "${var.system_name}-riemann"
   description = "Allow access to Riemann Server"
 
   # SSH
@@ -34,23 +34,16 @@ data "template_file" "install_user_data" {
 }
 
 resource "aws_instance" "riemann" {
-  ami               = "${var.ami_image_id}"
-  instance_type     = "${var.instance_type}"
-  availability_zone = "${var.availability_zones[0]}"
-  security_groups   = ["${aws_security_group.internal_inbound.id}"]
+  ami                    = "${var.ami_image_id}"
+  instance_type          = "${var.instance_type}"
+  availability_zone      = "${var.availability_zones[0]}"
+  vpc_security_group_ids = ["${aws_security_group.inbound.id}"]
 
   user_data = "${data.template_file.install_user_data.rendered}"
   key_name  = "${var.key_name}"
 
   tags {
-    key                 = "Name"
-    value               = "${var.system_name}-transactor"
-    propagate_at_launch = true
-  }
-
-  tags {
-    key                 = "Type"
-    value               = "Riemann"
-    propagate_at_launch = true
+    Name = "${var.system_name}-riemann"
+    Type = "Riemann"
   }
 }

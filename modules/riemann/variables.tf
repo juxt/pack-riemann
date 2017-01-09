@@ -4,9 +4,7 @@ variable "availability_zones" {
   type = "list"
 }
 
-variable "ami_image_id" {
-  default = "ami-0d77397e"
-}
+variable "ami_image_id" {}
 
 variable "instance_type" {
   default = "t2.medium"

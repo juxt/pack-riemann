@@ -3,6 +3,9 @@ exec > >(tee /var/log/packer-data.log|logger -t packer-data -s 2>/dev/console) 2
 
 RIEMANN_VERSION=$1
 
+apt-get update
+apt-get -y install default-jre
+apt-get -y install default-jdk
 apt-get install bzip2
 
 mkdir /riemann
