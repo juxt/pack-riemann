@@ -4,6 +4,6 @@ After=network.target
 
 [Service]
 User=riemann
-ExecStart=/app/bin/riemann /etc/riemann/riemann.config
+ExecStart=/app/bin/riemann /etc/riemann.config
 ExecReload=/bin/kill -HUP ${MAINPID}
 ExecStop=/bin/kill -WINCH ${MAINPID}
