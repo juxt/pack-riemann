@@ -6,7 +6,9 @@ variable "aws_region" {}
 
 variable "availability_zone" {}
 
-variable "system_name" {}
+variable "system_name" {
+  default = "all"
+}
 
 variable "riemann_ami" {}
 

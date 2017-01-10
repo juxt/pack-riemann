@@ -1,6 +1,4 @@
-variable "system_name" {
-  default = "all"
-}
+variable "system_name" {}
 
 variable "availability_zones" {
   type = "list"
