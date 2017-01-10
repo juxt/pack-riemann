@@ -58,8 +58,8 @@ resource "aws_instance" "riemann" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo systemctl start riemann"
-      "sudo systemctl start riemann-dash"
+      "sudo systemctl start riemann",
+      "sudo systemctl start riemann-dash",
     ]
   }
 }
