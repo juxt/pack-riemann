@@ -5,4 +5,4 @@ After=riemann.service
 
 [Service]
 User=ubuntu
-ExecStart=/usr/bin/riemann-dash
+ExecStart=/usr/local/bin/riemann-dash
