@@ -20,6 +20,8 @@ variable "riemann_key_path" {}
 
 variable "riemann_config_file" {}
 
+variable "riemann_private_ip" {}
+
 # Providers -----------------------------
 
 provider "aws" {
@@ -38,4 +40,5 @@ module "staging_riemann" {
   key_path           = "${var.riemann_key_path}"
   ami_image_id       = "${var.riemann_ami}"
   config_file        = "${var.riemann_config_file}"
+  private_ip         = "${var.riemann_private_ip}"
 }
