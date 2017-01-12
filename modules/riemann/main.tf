@@ -33,6 +33,7 @@ resource "aws_instance" "riemann" {
   availability_zone      = "${var.availability_zones[0]}"
   vpc_security_group_ids = ["${aws_security_group.inbound.id}"]
   key_name               = "${var.key_name}"
+  private_ip             = "${var.private_ip}"
 
   tags {
     Name = "${var.system_name}-riemann"

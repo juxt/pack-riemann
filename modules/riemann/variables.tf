@@ -17,3 +17,5 @@ variable "key_name" {}
 variable "key_path" {}
 
 variable "config_file" {}
+
+variable "private_ip" {}
