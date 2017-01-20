@@ -9,10 +9,6 @@ resource "aws_security_group" "inbound" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-
-    # ideally
-
-    # cidr_blocks = ["10.0.0.0/14"]
   }
 
   ingress {
@@ -20,6 +16,13 @@ resource "aws_security_group" "inbound" {
     to_port     = 5555
     protocol    = "tcp"
     cidr_blocks = ["${var.cidr}"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 65535
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags {
@@ -36,7 +39,7 @@ resource "aws_instance" "riemann" {
   private_ip             = "${var.private_ip}"
 
   tags {
-    Name = "${var.system_name}riemann"
+    Name = "${var.system_name}-riemann"
     Type = "Riemann"
   }
 
