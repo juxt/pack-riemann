@@ -12,11 +12,11 @@ packer build -var 'riemann_version=0.2.12' riemann.json
 
 See the `sample.tf` for a straightforward Terraform configuration to provision Riemann. Terraform also has a https://www.terraform.io/intro/[getting started guide].
 
-One option is to clone this repository into a working subdirectory of your project to start using it. You could also refer to the transactor module directly from Git:
+One option is to clone this repository into a working subdirectory of your project to start using it. You could also refer to the module directly from Git:
 
 ....
 module "riemann" {
-  source = "github.com/juxt/pack-riemann//modules/transactor?ref=0.1.0"
+  source = "github.com/juxt/pack-riemann//modules/riemann?ref=0.2.0"
   # Declare variable inputs
   # ...
 }
