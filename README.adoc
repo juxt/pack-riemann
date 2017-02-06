@@ -1,6 +1,6 @@
-= Packer-Riemann
+= Pack-Riemann
 
-Package up Riemann and Riemann-dash into an AMI.
+Package up Riemann and Riemann-dash into an AMI using Packer and provision using Terraform.
 
 == Build the Packer AMI.
 
