@@ -12,15 +12,15 @@ variable "system_name" {
   default = "all"
 }
 
-variable "riemann_ami" {}
+variable "ami" {}
 
-variable "riemann_key_name" {}
+variable "key_name" {}
 
-variable "riemann_key_path" {}
+variable "key_path" {}
 
-variable "riemann_config_file" {}
+variable "config_file" {}
 
-variable "riemann_private_ip" {}
+variable "private_ip" {}
 
 # Providers -----------------------------
 
@@ -36,9 +36,9 @@ module "staging_riemann" {
   availability_zones = ["${var.availability_zone}"]
   system_name        = "${var.system_name}"
   cidr               = "${var.cidr}"
-  key_name           = "${var.riemann_key_name}"
-  key_path           = "${var.riemann_key_path}"
-  ami_image_id       = "${var.riemann_ami}"
-  config_file        = "${var.riemann_config_file}"
-  private_ip         = "${var.riemann_private_ip}"
+  key_name           = "${var.key_name}"
+  key_path           = "${var.key_path}"
+  ami_image_id       = "${var.ami}"
+  config_file        = "${var.config_file}"
+  private_ip         = "${var.private_ip}"
 }
